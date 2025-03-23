@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+    --color-purple: #5349d7;
+    --color-lavanda: #7771ff;
+    --color-yellow: #ffe000;
+}
+
+@font-face {
+    font-family: 'Banana';
+    src: url('/fonts/Banana.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Splatch';
+    src: url('/fonts/Splatch.woff') format('woff2');
+}
+
+@font-face {
+    font-family: 'tf2';
+    src: url('/fonts/tf2build.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Violet';
+    src: url('/fonts/Violet Smile.woff2') format('woff2');
+}
