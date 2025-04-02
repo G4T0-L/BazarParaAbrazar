@@ -1,0 +1,69 @@
+---
+const navLinks = [
+  { href: '/', label: 'Nosotros' },
+  { href: '/', label: 'Impacto' },
+  { href: '/', label: 'Contacto' }
+];
+const sumateLink = { href: '/', label: '¡Sumate!' };
+---
+
+<nav class="px-8 py-4 bg-white shadow" x-data="{ isOpen: false }">
+  <div class="flex items-center justify-between">
+    <a href="/" class="no-underline">
+      <img src="/Logo.svg" alt="Logo" class="h-[90px] w-auto" />
+    </a>
+
+    <!-- Menú para pantallas mayores a 1000px -->
+    <div class="flex items-center gap-6 max-[1000px]:hidden">
+      <ul class="flex gap-6 m-0 p-0 items-center list-none">
+        {navLinks.map(link => (
+          <li data-key={link.label}>
+            <a
+              href={link.href}
+              class="no-underline text-[28px] font-['Violet Smile'] text-[var(--color-details)] hover:text-[var(--color-primary)] transition-colors duration-300"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <a
+        href={sumateLink.href}
+        class="no-underline text-[26px] font-['Splatch'] px-4 py-2 rounded-[15px] text-[var(--color-secondary)] bg-[var(--color-details)] hover:bg-[var(--color-primary)] transition-colors duration-300"
+      >
+        {sumateLink.label}
+      </a>
+    </div>
+
+    <!-- Controles para vista móvil: botón "¡Sumate!" y botón de menú -->
+    <div class="items-center gap-4 hidden max-[1000px]:flex">
+      <a
+        href={sumateLink.href}
+        class="no-underline text-[18px] font-['Splatch'] px-4 py-2 rounded-[15px] text-[var(--color-secondary)] bg-[var(--color-details)] hover:bg-[var(--color-primary)] transition-colors duration-300"
+      >
+        {sumateLink.label}
+      </a>
+      <button @click="isOpen = !isOpen" class="text-primary">
+        <img src="/images/icons/menu.svg" alt="Menu" class="w-12 h-12" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Menú desplegable para móviles con margen entre opciones -->
+  <ul
+    class="flex flex-col gap-4 mt-4 hidden max-[1000px]:block"
+    x-show="isOpen"
+    x-transition
+  >
+    {navLinks.map(link => (
+      <li data-key={link.label}>
+        <a
+          href={link.href}
+          class="no-underline text-[28px] font-['Violet Smile'] text-[var(--color-details)] hover:text-[var(--color-primary)] transition-colors duration-300"
+        >
+          {link.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

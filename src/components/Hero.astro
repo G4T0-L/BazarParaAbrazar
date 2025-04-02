@@ -1,0 +1,32 @@
+---
+---
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<section class="w-full h-screen overflow-hidden">
+  <div class="swiper swiper-hero w-full h-full [--swiper-pagination-color:var(--color-details)]">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide relative">
+        <img src="/images/Banner.svg" alt="Slide 1" class="w-full h-full object-cover" />
+      </div>
+      <div class="swiper-slide relative">
+        <img src="/images/Banner2.svg" alt="Slide 2" class="w-full h-full object-cover" />
+      </div>
+    </div>
+    <!-- Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Navigation buttons -->
+    <div class="swiper-button-prev after:content-[''] after:text-[var(--color-details)] hover:after:text-[var(--color-primary)]"></div>
+    <div class="swiper-button-next after:content-[''] after:text-[var(--color-details)] hover:after:text-[var(--color-primary)]"></div>
+  </div>
+</section>
+
+<script type="module" client:load>
+  import Swiper from "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";
+
+  const swiper = new Swiper(".swiper", {
+    loop: true,
+    autoplay: { delay: 3000 },
+    pagination: { el: ".swiper-pagination", clickable: true },
+    navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+  });
+</script>

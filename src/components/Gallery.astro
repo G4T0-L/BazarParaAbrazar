@@ -1,0 +1,125 @@
+<div class="swiper-dynamic">
+  <div class="swiper-wrapper" id="my-dynamic-slider">
+    {
+      Array.from({ length: 25 }).map((_, i) => (
+        <a
+          data-key={i}
+          class="swiper-slide"
+          href={`/images/photos/photo_${i + 1}.webp`}
+          target="_blank"
+          data-pswp-width="1875"
+          data-pswp-height="2500"
+        >
+          <img
+            src={`/images/photos/photo_${i + 1}.webp`}
+            alt={`Photo ${i + 1}`}
+            loading="lazy"
+          />
+        </a>
+      ))
+    }
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<style>
+  /* Contenedor principal centrado y con altura fija */
+  .swiper-dynamic {
+    position: relative;
+    width: 100%;
+    max-width: auto;
+    margin: auto;
+    height: 400px;
+    overflow: hidden;
+    background-color: var(--color-secondary);
+  }
+  /* La envoltura del slider mantiene la altura */
+  .swiper-dynamic .swiper-wrapper {
+    height: 100%;
+  }
+  /* Cada slide se fija en 400x400, se evita que se encoja y centra el contenido */
+  .swiper-dynamic .swiper-slide {
+    width: 400px;
+    height: 400px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 45px;
+    padding-inline: 5px;
+  }
+  /* Las imágenes ocuparán todo el slide sin deformarse y tendrán bordes redondeados */
+  .swiper-dynamic .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .swiper-dynamic .swiper-slide img:hover {
+    transform: scale(1.05);
+  }
+  /* Estilos para la paginación */
+  .swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 1;
+    margin: 0 4px;
+    border-radius: 50%;
+  }
+  :global(.swiper-pagination-bullet-active) {
+    background-color: var(--color-primary) !important;
+    background-image: none !important;
+  }
+  /* Responsive: Ajustes para dispositivos con resolución menor a 1024px (incluye menor a 1000px) */
+  @media (max-width: 1024px) {
+    .swiper-dynamic {
+      max-width: 1000px;
+      height: 280px;
+    }
+    .swiper-dynamic .swiper-slide {
+      width: 280px;
+      height: 280px;
+    }
+</style>
+
+<script>
+  // --- Inicialización de Swiper para el slider dinámico ---
+  import Swiper from "swiper";
+  import "swiper/css";
+  import { Navigation, Pagination } from "swiper/modules";
+  import "swiper/css/navigation";
+  import "swiper/css/pagination";
+
+  new Swiper(".swiper-dynamic", {
+    modules: [Navigation, Pagination],
+    loop: true,
+    slidesPerView: "auto",
+    spaceBetween: 20,
+    pagination: {
+      el: ".swiper-dynamic .swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      120: { slidesPerView: 2.6, spaceBetween: 3 },
+      320: { slidesPerView: 2.6, spaceBetween: 3 },
+      640: { slidesPerView: 2.6, spaceBetween: 3 },
+      768: { slidesPerView: 3.6, spaceBetween: 5 },
+      1024: { slidesPerView: 3.6, spaceBetween: 5 },
+      1280: { slidesPerView: 3.6, spaceBetween: 5 },
+    },
+  });
+
+  // --- Configuración de PhotoSwipe Lightbox para el slider dinámico ---
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+  import "photoswipe/style.css";
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: "#my-dynamic-slider",
+    children: "a",
+    pswpModule: () => import("photoswipe"),
+  });
+  lightbox.init();
+</script>

@@ -1,0 +1,42 @@
+<div class="relative overflow-hidden">
+  <!-- Imagen de fondo -->
+  <img src="/images/Foto1.jpg" alt="Foto1" class="w-full h-auto block" />
+
+  <!-- Fade: degradado desde el color detail hasta transparente -->
+  <div class="fade-overlay absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#7771ff] to-transparent pointer-events-none"></div>
+
+  <!-- Contenedor de texto: título en la parte superior y párrafo en la parte inferior -->
+  <div class="absolute inset-0 flex flex-col justify-between z-10 p-4">
+    <!-- Contenedor centrado horizontalmente para el título -->
+    <div class="w-full max-w-3xl mx-auto">
+      <h1
+        class="text-white text-center font-['Splatch']"
+        style="font-size: clamp(1.2rem, 4vw, 3.0rem);"
+      >
+        ¿Quiénes somos?
+      </h1>
+    </div>
+    <!-- Contenedor centrado horizontalmente para el párrafo -->
+    <div class="w-full max-w-8xl mx-auto">
+      <p
+        class="text-white text-center max-w-full"
+        style="font-size: clamp(0.8rem, 3vw, 2.8rem);"
+      >
+        Somos <span class="text-[var(--color-secondary)]">un colectivo con historia</span>. Nacemos con la idea de transformar realidades y cumplir los sueños de niñas, niños y mujeres del Barrio Autoconstruido La Avanzada -Parte Alta del Distrito de Medellin, con un enfoque innovador de intervención social en territorio.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Altura por defecto del fade */
+  .fade-overlay {
+    height: 650px;
+  }
+  /* En pantallas pequeñas se reduce la altura del fade para evitar cortes */
+  @media (max-width: 640px) {
+    .fade-overlay {
+      height: 400px;
+    }
+  }
+</style>
