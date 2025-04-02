@@ -25,3 +25,6 @@
     font-family: 'Violet Smile';
     src: url('/fonts/Violet Smile.woff2') format('woff2');
 }
+html {
+    scroll-behavior: smooth;
+  }
